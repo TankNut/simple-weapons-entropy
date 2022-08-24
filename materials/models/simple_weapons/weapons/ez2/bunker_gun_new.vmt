@@ -1,0 +1,22 @@
+SDK_VertexLitGeneric
+{
+	"$basetexture" "models/simple_weapons/weapons/ez2/bunker_gun_new"
+	"$bumpmap" "models/simple_weapons/weapons/ez2/bunker_gun_new_n"
+	"$surfaceprop" "metal"
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" "1"
+	"$selfillum" "1"
+	"$phong" "1"
+	"$phongboost" "1"
+	"$phongexponent" "15"
+	"$phongalbedotint" "1"								
+	"$phongfresnelranges"	"[.1 5 1]"
+
+	Proxies
+	{
+		SimplePulsePistol
+		{
+			resultVar "$selfillumtint"
+		}
+	}
+}

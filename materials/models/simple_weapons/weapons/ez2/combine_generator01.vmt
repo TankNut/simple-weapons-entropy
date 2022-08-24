@@ -1,0 +1,13 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/simple_weapons/weapons/ez2/combine_generator01"
+	"$surfaceprop" "metal"
+	"$bumpmap" "models/simple_weapons/weapons/ez2/combine_generator01_normal"
+	"$envmap" "env_cubemap"
+	"$normalmapalphaenvmapmask" 1
+	"$envmapcontrast" 1
+	"$envmapsaturation" 1
+	"$envmaptint" "[ .56 .67 .75 ]"
+
+	"$selfillum" 1
+}
