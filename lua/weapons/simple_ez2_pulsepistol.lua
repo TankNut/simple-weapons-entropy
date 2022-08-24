@@ -57,12 +57,12 @@ SWEP.Primary = {
 }
 
 SWEP.NPCData = {
-	Burst = {2, 3},
+	Burst = {1, 1},
 	Delay = 0.5,
-	Rest = {SWEP.Primary.Delay * 2, SWEP.Primary.Delay * 3}
+	Rest = {SWEP.Primary.Delay, SWEP.Primary.Delay * 2}
 }
 
-list.Add("NPCUsableWeapons", {class = "simple_ez_pulsepistol", title = "Simple Weapons: " .. SWEP.PrintName})
+list.Add("NPCUsableWeapons", {class = "simple_ez2_pulsepistol", title = "Simple Weapons: " .. SWEP.PrintName})
 
 sound.Add({
 	name = "Entropy_PulsePistol.Single",
@@ -231,6 +231,10 @@ function SWEP:FireWeapon()
 end
 
 function SWEP:ConsumeAmmo()
+	if self:GetOwner():IsNPC() then
+		return
+	end
+
 	self:SetClip1(math.max(self:GetAmmoCharge() - self.Primary.Cost, 0))
 end
 
@@ -261,7 +265,7 @@ function SWEP:DoImpactEffect(tr, dmgtype)
 end
 
 function SWEP:FireAnimationEvent(_, _, event)
-	if event == 49 then
+	if event == 51 then
 		self:EmitSound("Entropy_PulsePistol.Reload")
 		self:SetClip1(50)
 	end

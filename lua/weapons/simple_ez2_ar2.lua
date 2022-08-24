@@ -52,9 +52,9 @@ SWEP.Primary = {
 }
 
 SWEP.Secondary = {
+	Ammo = "AR2AltFire",
 	ChargeSound = "Weapon_CombineGuard.Special1",
-	FireSound = "Entropy_AR2_Proto.AltFire_Single",
-	Ammo = "AR2AltFire"
+	FireSound = "Entropy_AR2_Proto.AltFire_Single"
 }
 
 SWEP.NPCData = {
