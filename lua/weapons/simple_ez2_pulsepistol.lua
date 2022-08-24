@@ -49,7 +49,7 @@ SWEP.Primary = {
 		MinAng = Angle(0.25, -0.6, 0),
 		MaxAng = Angle(0.5, 0.6, 0),
 		Punch = 0.4,
-		Ratio = 0.2
+		Ratio = 0
 	},
 
 	Sound = "Entropy_PulsePistol.Single",
