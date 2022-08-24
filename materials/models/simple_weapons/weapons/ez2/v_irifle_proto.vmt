@@ -3,7 +3,7 @@ VertexLitGeneric
 
 	// MAIN SETTINGS
 	$basetexture                "models/simple_weapons/weapons/ez2/v_irifle_proto"
-	$bumpmap                    "models/simple_weapons/weapons/ez2/v_irifle_proto_n"
+	$bumpmap                    "models/simple_weapons/weapons/ez2/v_irifle_n"
 
 	"$phong"  				"1"
 	"$phongexponent" 		"24"
