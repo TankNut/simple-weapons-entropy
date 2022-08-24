@@ -1,5 +1,5 @@
 if SERVER then
-	--resource.AddWorkshop("")
+	resource.AddWorkshop("2853242748")
 end
 
 for i = 1, 9 do
