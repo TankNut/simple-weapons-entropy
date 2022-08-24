@@ -63,7 +63,7 @@ SWEP.NPCData = {
 	Rest = {SWEP.Primary.Delay * 2, SWEP.Primary.Delay * 3}
 }
 
-list.Add("NPCUsableWeapons", {class = "simple_ez2_ar2", title = "Simple Weapons: " .. SWEP.PrintName})
+list.Add("NPCUsableWeapons", {class = "simple_ez2_ar2", title = "Simple Weapons: AR2 (Entropy Zero)"})
 
 sound.Add({
 	name = "Entropy_AR2.Single",
