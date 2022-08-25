@@ -1,6 +1,6 @@
 AddCSLuaFile()
 
-SWEP.Base = "simple_base"
+SWEP.Base = "simple_hl2_shotgun"
 
 SWEP.PrintName = "Shotgun"
 SWEP.Category = "Simple Weapons: Entropy Zero"
@@ -43,8 +43,8 @@ SWEP.Primary = {
 	RangeModifier = 0.7,
 
 	Recoil = {
-		MinAng = Angle(2, -0.7, 0),
-		MaxAng = Angle(3, 0.7, 0),
+		MinAng = Angle(2, -4, 0),
+		MaxAng = Angle(4, 4, 0),
 		Punch = 0.5,
 		Ratio = 0
 	},
@@ -57,6 +57,19 @@ SWEP.Primary = {
 
 	Sound = "Entropy_Shotgun.Single",
 	TracerName = "Tracer"
+}
+
+SWEP.Secondary = {
+	Count = 12,
+
+	Recoil = {
+		MinAng = Angle(7, -6, 0),
+		MaxAng = Angle(7, 6, 0),
+		Punch = 0.5,
+		Ratio = 0
+	},
+
+	Sound = "Entropy_Shotgun.Double",
 }
 
 SWEP.NPCData = {
@@ -74,6 +87,15 @@ sound.Add({
 	level = 140,
 	pitch = {98, 101},
 	sound = "simple_weapons/weapons/ez2/shotgun/shotgun_fire7.wav"
+})
+
+sound.Add({
+	name = "Entropy_Shotgun.Double",
+	channel = CHAN_WEAPON,
+	volume = 1,
+	level = 140,
+	pitch = {98, 101},
+	sound = "simple_weapons/weapons/ez2/shotgun/shotgun_dbl_fire7.wav"
 })
 
 sound.Add({
