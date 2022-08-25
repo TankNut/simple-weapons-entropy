@@ -168,7 +168,7 @@ function SWEP:DoImpactEffect(tr, dmgtype)
 end
 
 function SWEP:FireAnimationEvent(_, _, event)
-	if event == 49 or event == 51 then
+	if event == 51 then
 		self:EmitSound("Entropy_PulsePistol.Reload")
 		self:SetClip1(50)
 	end
