@@ -65,8 +65,7 @@ SWEP.Secondary = {
 	Recoil = {
 		MinAng = Angle(7, -6, 0),
 		MaxAng = Angle(7, 6, 0),
-		Punch = 0.5,
-		Ratio = 0
+		Punch = 0.5
 	},
 
 	Sound = "Entropy_Shotgun.Double",
