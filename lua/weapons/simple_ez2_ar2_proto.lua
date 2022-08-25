@@ -65,71 +65,6 @@ SWEP.NPCData = {
 
 list.Add("NPCUsableWeapons", {class = "simple_ez2_ar2_proto", title = "Simple Weapons: " .. SWEP.PrintName})
 
-sound.Add({
-	name = "Entropy_AR2_Proto.Single",
-	channel = CHAN_WEAPON,
-	volume = 0.8,
-	level = 140,
-	pitch = {85, 95},
-	sound = "^simple_weapons/weapons/ez2/ar2_proto/fire1.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2_Proto.AltFire_Single",
-	channel = CHAN_WEAPON,
-	volume = 0.55,
-	level = 140,
-	sound = "^simple_weapons/weapons/ez2/ar2_proto/irifle_fire2.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2_Proto.Special1",
-	channel = CHAN_WEAPON,
-	volume = 0.7,
-	level = 75,
-	sound = "^simple_weapons/weapons/ez2/ar2_proto/charging.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2_Proto.Reload_Push",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2_proto/ar2_reload_push.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2_Proto.Reload_Slideback",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2_proto/ar2_slideback.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2_Proto.Reload_Sliderelease",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2_proto/ar2_sliderelease.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2_Proto.Reload_Magdraw",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2_proto/ar2_magdraw.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2_Proto.Reload_Magin",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2_proto/ar2_magin.wav"
-})
-
 function SWEP:DoImpactEffect(tr, dmgtype)
 	if tr.HitSky then
 		return
@@ -202,3 +137,68 @@ function SWEP:FireWeapon()
 
 	ply:FireBullets(bullet)
 end
+
+sound.Add({
+	name = "Entropy_AR2_Proto.Single",
+	channel = CHAN_WEAPON,
+	volume = 0.8,
+	level = 140,
+	pitch = {85, 95},
+	sound = "simple_weapons/weapons/ez2/ar2_proto/fire1.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2_Proto.AltFire_Single",
+	channel = CHAN_WEAPON,
+	volume = 0.55,
+	level = 140,
+	sound = "simple_weapons/weapons/ez2/ar2_proto/irifle_fire2.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2_Proto.Special1",
+	channel = CHAN_WEAPON,
+	volume = 0.7,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2_proto/charging.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2_Proto.Reload_Push",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2_proto/ar2_reload_push.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2_Proto.Reload_Slideback",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2_proto/ar2_slideback.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2_Proto.Reload_Sliderelease",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2_proto/ar2_sliderelease.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2_Proto.Reload_Magdraw",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2_proto/ar2_magdraw.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2_Proto.Reload_Magin",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2_proto/ar2_magin.wav"
+})

@@ -224,7 +224,7 @@ $sequence "dryfire" {
 	{ event AE_CL_PLAYSOUND 7 "Entropy_PulsePistol.Movement1" }
 	{ event AE_CL_PLAYSOUND 17 "Entropy_PulsePistol.SlideBack" }
 	{ event AE_CL_PLAYSOUND 21 "Entropy_PulsePistol.SlideForward" }
-	{ event AE_SLIDERETURN 22 "" }
+	{ event 51 22 "" }
 	{ event AE_CL_PLAYSOUND 27 "Entropy_PulsePistol.Movement3" }
 	fadein 0.2
 	fadeout 0.2

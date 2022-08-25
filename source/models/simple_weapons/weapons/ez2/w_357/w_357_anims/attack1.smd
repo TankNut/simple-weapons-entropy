@@ -1,0 +1,13 @@
+// Created by Crowbar 0.63
+version 1
+nodes
+  0 "ValveBiped.Bip01_R_Hand" -1
+  1 "MAXSceneRoot.Cylinder01" 0
+  2 "ValveBiped.Muzzle" 1
+end
+skeleton
+  time 0
+    0 3.123047 -6.628906 1.348633 1.755418 -0.064197 1.418393
+    1 5.979659 -2.458369 -3.705952 -0.926621 -1.339774 0.848124
+    2 -1.185498 0.114683 -9.047256 -1.574726 1.562272 -0.003802
+end

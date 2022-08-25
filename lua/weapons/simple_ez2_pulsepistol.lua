@@ -64,103 +64,6 @@ SWEP.NPCData = {
 
 list.Add("NPCUsableWeapons", {class = "simple_ez2_pulsepistol", title = "Simple Weapons: " .. SWEP.PrintName})
 
-sound.Add({
-	name = "Entropy_PulsePistol.Single",
-	channel = CHAN_WEAPON,
-	volume = 0.92,
-	level = 140,
-	pitch = {95, 108},
-	sound = "^simple_weapons/weapons/ez2/pulsepistol/pistol_fire3.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.Charge",
-	channel = CHAN_WEAPON,
-	volume = 0.7,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_charging.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.ChargedFire",
-	channel = CHAN_WEAPON,
-	volume = 0.95,
-	level = 140,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_chargedfire.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.Reload",
-	channel = CHAN_STATIC,
-	volume = 0.7,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_working.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.Draw",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_draw.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.Empty",
-	channel = CHAN_STATIC,
-	volume = 0.7,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_empty.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.FirstDraw",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_firstdraw.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.SlideBack",
-	channel = CHAN_STATIC,
-	volume = 0.7,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_slideback.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.SlideForward",
-	channel = CHAN_STATIC,
-	volume = 0.7,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_slideforward.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.Movement1",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_movement1.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.Movement2",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_movement2.wav"
-})
-
-sound.Add({
-	name = "Entropy_PulsePistol.Movement3",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_movement3.wav"
-})
-
 -- ACT_VM_RECOIL support
 local transitions = {
 	[ACT_VM_PRIMARYATTACK] = ACT_VM_RECOIL1,
@@ -265,7 +168,7 @@ function SWEP:DoImpactEffect(tr, dmgtype)
 end
 
 function SWEP:FireAnimationEvent(_, _, event)
-	if event == 51 then
+	if event == 49 or event == 51 then
 		self:EmitSound("Entropy_PulsePistol.Reload")
 		self:SetClip1(50)
 	end
@@ -290,3 +193,100 @@ if CLIENT then
 		end
 	})
 end
+
+sound.Add({
+	name = "Entropy_PulsePistol.Single",
+	channel = CHAN_WEAPON,
+	volume = 0.92,
+	level = 140,
+	pitch = {95, 108},
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pistol_fire3.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.Charge",
+	channel = CHAN_WEAPON,
+	volume = 0.7,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_charging.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.ChargedFire",
+	channel = CHAN_WEAPON,
+	volume = 0.95,
+	level = 140,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_chargedfire.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.Reload",
+	channel = CHAN_AUTO,
+	volume = 0.7,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_working.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.Draw",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_draw.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.Empty",
+	channel = CHAN_AUTO,
+	volume = 0.7,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_empty.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.FirstDraw",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_firstdraw.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.SlideBack",
+	channel = CHAN_AUTO,
+	volume = 0.7,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_slideback.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.SlideForward",
+	channel = CHAN_AUTO,
+	volume = 0.7,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_slideforward.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.Movement1",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_movement1.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.Movement2",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_movement2.wav"
+})
+
+sound.Add({
+	name = "Entropy_PulsePistol.Movement3",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_movement3.wav"
+})

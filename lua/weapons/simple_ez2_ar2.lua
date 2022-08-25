@@ -65,95 +65,6 @@ SWEP.NPCData = {
 
 list.Add("NPCUsableWeapons", {class = "simple_ez2_ar2", title = "Simple Weapons: AR2 (Entropy Zero)"})
 
-sound.Add({
-	name = "Entropy_AR2.Single",
-	channel = CHAN_WEAPON,
-	volume = 0.8,
-	level = 140,
-	pitch = {85, 95},
-	sound = "^simple_weapons/weapons/ez2/ar2/fire1.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2.AltFire_Single",
-	channel = CHAN_WEAPON,
-	volume = 0.55,
-	level = 140,
-	sound = "^simple_weapons/weapons/ez2/ar2/ar2_altfire.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2.Reload_Rotate",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2/ar2_reload_rotate.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2.Reload_Push",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2/ar2_reload_push.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2.Draw",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2/ar2_draw.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2.FirstDraw",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2/ar2_firstdraw.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2.Inspect1",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2/ar2_inspect1.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2.Inspect2",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2/ar2_inspect2.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2.Movement1",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2/ar2_movement1.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2.Movement2",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2/ar2_movement2.wav"
-})
-
-sound.Add({
-	name = "Entropy_AR2.Movement3",
-	channel = CHAN_STATIC,
-	volume = 0.9,
-	level = 75,
-	sound = "simple_weapons/weapons/ez2/ar2/ar2_movement3.wav"
-})
-
 function SWEP:DoImpactEffect(tr, dmgtype)
 	if tr.HitSky then
 		return
@@ -190,3 +101,92 @@ function SWEP:TranslateWeaponAnim(act)
 
 	return act
 end
+
+sound.Add({
+	name = "Entropy_AR2.Single",
+	channel = CHAN_WEAPON,
+	volume = 0.8,
+	level = 140,
+	pitch = {85, 95},
+	sound = "simple_weapons/weapons/ez2/ar2/fire1.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2.AltFire_Single",
+	channel = CHAN_WEAPON,
+	volume = 0.55,
+	level = 140,
+	sound = "simple_weapons/weapons/ez2/ar2/ar2_altfire.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2.Reload_Rotate",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2/ar2_reload_rotate.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2.Reload_Push",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2/ar2_reload_push.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2.Draw",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2/ar2_draw.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2.FirstDraw",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2/ar2_firstdraw.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2.Inspect1",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2/ar2_inspect1.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2.Inspect2",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2/ar2_inspect2.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2.Movement1",
+	channel = CHAN_ITEM,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2/ar2_movement1.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2.Movement2",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2/ar2_movement2.wav"
+})
+
+sound.Add({
+	name = "Entropy_AR2.Movement3",
+	channel = CHAN_AUTO,
+	volume = 0.9,
+	level = 75,
+	sound = "simple_weapons/weapons/ez2/ar2/ar2_movement3.wav"
+})
