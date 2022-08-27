@@ -1,0 +1,13 @@
+SDK_VertexLitGeneric
+{
+	"$baseTexture" 	"models/simple_weapons/weapons/ez2/combine_elite"
+	"$bumpmap" "models/simple_weapons/weapons/ez2/combine_elite_normal"
+	"$model" "1"	
+	"selfillumtint" "[2 1 1]"
+	"$phong" "1"
+	"$phongboost" "5"
+	"$halflambert" "1"
+	"$phongexponenttexture" "models/simple_weapons/weapons/ez2/combine_elite_phong"
+	"$phongalbedotint" "1"										
+	"$phongfresnelranges"	"[.1 .5  1]"
+}

@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+	// Original shader: VertexLitTexture
+	"$basetexture" "models/simple_weapons/weapons/ez2/texture4"
+}
