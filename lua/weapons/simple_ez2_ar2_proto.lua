@@ -1,9 +1,5 @@
 AddCSLuaFile()
 
-simple_weapons.Include("Convars")
-
-DEFINE_BASECLASS("simple_hl2_ar2")
-
 SWEP.Base = "simple_hl2_ar2"
 
 SWEP.PrintName = "AR2 Prototype"
@@ -64,43 +60,6 @@ SWEP.NPCData = {
 }
 
 list.Add("NPCUsableWeapons", {class = "simple_ez2_ar2_proto", title = "Simple Weapons: " .. SWEP.PrintName})
-
-function SWEP:DoImpactEffect(tr, dmgtype)
-	if tr.HitSky then
-		return
-	end
-
-	if not game.SinglePlayer() and IsFirstTimePredicted() then
-		return
-	end
-
-	local effect = EffectData()
-
-	effect:SetOrigin(tr.HitPos + tr.HitNormal)
-	effect:SetNormal(tr.HitNormal)
-
-	util.Effect("AR2Impact", effect)
-end
-
--- ACT_VM_RECOIL support
-local transitions = {
-	[ACT_VM_PRIMARYATTACK] = ACT_VM_RECOIL1,
-	[ACT_VM_RECOIL1] = ACT_VM_RECOIL2,
-	[ACT_VM_RECOIL2] = ACT_VM_RECOIL3,
-	[ACT_VM_RECOIL3] = ACT_VM_RECOIL3
-}
-
-function SWEP:TranslateWeaponAnim(act)
-	if act == ACT_VM_PRIMARYATTACK then
-		local lookup = transitions[self:GetActivity()]
-
-		if lookup then
-			act = lookup
-		end
-	end
-
-	return act
-end
 
 function SWEP:FireWeapon()
 	local ply = self:GetOwner()
