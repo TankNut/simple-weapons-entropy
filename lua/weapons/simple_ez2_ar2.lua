@@ -20,7 +20,6 @@ SWEP.HoldType = "ar2"
 SWEP.LowerHoldType = "passive"
 
 SWEP.Firemode = -1
-SWEP.SwayScale = 3
 
 SWEP.Primary = {
 	Ammo = "AR2",

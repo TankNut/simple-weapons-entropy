@@ -20,7 +20,6 @@ SWEP.HoldType = "revolver"
 SWEP.LowerHoldType = "normal"
 
 SWEP.Firemode = 0
-SWEP.SwayScale = 3
 
 SWEP.Primary = {
 	Ammo = "357",

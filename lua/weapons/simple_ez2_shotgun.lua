@@ -20,7 +20,6 @@ SWEP.HoldType = "shotgun"
 SWEP.LowerHoldType = "passive"
 
 SWEP.Firemode = 0
-SWEP.SwayScale = 3
 
 SWEP.Primary = {
 	Ammo = "Buckshot",

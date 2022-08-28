@@ -20,7 +20,6 @@ SWEP.HoldType = "smg"
 SWEP.LowerHoldType = "passive"
 
 SWEP.Firemode = 3
-SWEP.SwayScale = 3
 
 SWEP.Primary = {
 	Ammo = "SMG1",
@@ -49,7 +48,7 @@ SWEP.Primary = {
 	TracerName = "Tracer"
 }
 
-function SWEP:AlternateAttack()
+function SWEP:AltFire()
 	self.Primary.Automatic = false
 
 	self:SetFiremode(self:GetFiremode() == -1 and 3 or -1)

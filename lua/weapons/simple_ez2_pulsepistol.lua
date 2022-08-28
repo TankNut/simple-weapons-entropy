@@ -24,7 +24,6 @@ SWEP.HoldType = "pistol"
 SWEP.LowerHoldType = "normal"
 
 SWEP.Firemode = -1
-SWEP.SwayScale = 3
 
 SWEP.Primary = {
 	Ammo = "",
@@ -119,7 +118,7 @@ function SWEP:PrimaryAttack()
 		self:SendTranslatedWeaponAnim(ACT_VM_DRYFIRE)
 
 		self:SetNextIdle(CurTime() + self:SequenceDuration())
-		self:SetNextPrimaryFire(CurTime() + 1.5)
+		self:SetNextFire(CurTime() + 1.5)
 
 		return
 	end
