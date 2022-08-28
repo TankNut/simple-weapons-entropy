@@ -37,7 +37,7 @@ SWEP.Primary = {
 
 	Delay = 60 / 150,
 
-	ChargeRate = 10,
+	ChargeRate = 5,
 
 	Range = 700,
 	Accuracy = 12,
@@ -87,6 +87,7 @@ function SWEP:SetupDataTables()
 	BaseClass.SetupDataTables(self)
 
 	self:AddNetworkVar("Float", "LastFire")
+	self:AddNetworkVar("Float", "ChargeStart")
 
 	if SERVER then
 		self:SetLastFire(CurTime())
@@ -99,6 +100,11 @@ function SWEP:GetAmmoCharge()
 	end
 
 	local ammo = self:Clip1()
+
+	if self:GetChargeStart() != 0 then
+		return ammo
+	end
+
 	local timeSince = CurTime() - self:GetLastFire()
 
 	if timeSince <= 0 then
@@ -108,11 +114,52 @@ function SWEP:GetAmmoCharge()
 	return math.min(math.Round(ammo + timeSince * self.Primary.ChargeRate), self.Primary.ClipSize)
 end
 
-function SWEP:IsEmpty()
-	return self:GetAmmoCharge() <= self.Primary.Cost
+function SWEP:GetAltCharge()
+	if self:GetChargeStart() == 0 then
+		return 0
+	end
+
+	local timeSince = CurTime() - self:GetChargeStart()
+
+	return math.min(math.Round(timeSince * self.Primary.ChargeRate * 2), self.Primary.ClipSize - 5) + 5
 end
 
-function SWEP:PrimaryAttack()
+function SWEP:IsEmpty()
+	return self:GetAmmoCharge() < self.Primary.Cost
+end
+
+function SWEP:IsCharging()
+	return self:GetChargeStart() != 0
+end
+
+function SWEP:Think()
+	BaseClass.Think(self)
+
+	local start = self:GetChargeStart()
+
+	if start != 0 and CurTime() - start > 0.2 then
+		local charge = self:GetAltCharge()
+
+		if charge == self.Primary.ClipSize or self:GetAmmoCharge() - self:GetAltCharge() <= 0 or not self:IsAltFireHeld() then
+			self:SetChargeStart(0)
+			self:SetClip1(math.max(self:Clip1() - charge, 0))
+
+			if not game.SinglePlayer() or SERVER then
+				self:FireChargeShot(charge)
+			end
+		end
+	end
+end
+
+function SWEP:CanPrimaryFire()
+	if self:HandleAutoRaise() or self:HandleReloadAbort() then
+		return false
+	end
+
+	if self:IsCharging() then
+		return false
+	end
+
 	if self:IsEmpty() then
 		self:EmitSound("Entropy_PulsePistol.Empty")
 		self:SendTranslatedWeaponAnim(ACT_VM_DRYFIRE)
@@ -120,16 +167,84 @@ function SWEP:PrimaryAttack()
 		self:SetNextIdle(CurTime() + self:SequenceDuration())
 		self:SetNextFire(CurTime() + 1.5)
 
-		return
+		return false
 	end
 
-	BaseClass.PrimaryAttack(self)
+	return true
 end
 
 function SWEP:FireWeapon()
 	self:SetLastFire(CurTime())
 
 	BaseClass.FireWeapon(self)
+end
+
+function SWEP:CanAltFire()
+	if self:GetNextFire() > CurTime() or self:IsCharging() then
+		return false
+	end
+
+	return true
+end
+
+function SWEP:AltFire()
+	self.Secondary.Automatic = true
+
+	if self:IsEmpty() then
+		self:EmitSound("Entropy_PulsePistol.Empty")
+		self:SendTranslatedWeaponAnim(ACT_VM_DRYFIRE)
+
+		self:SetNextIdle(CurTime() + self:SequenceDuration())
+		self:SetNextFire(CurTime() + 1.5)
+
+		return false
+	end
+
+	self:EmitSound("Entropy_PulsePistol.Charge")
+
+	self:SetClip1(self:GetAmmoCharge())
+
+	self:SetChargeStart(CurTime())
+
+	self:SendTranslatedWeaponAnim()
+end
+
+function SWEP:FireChargeShot(charge)
+	local ply = self:GetOwner()
+	local primary = self.Primary
+
+	self:EmitSound("Entropy_PulsePistol.ChargedFire")
+
+	self:SendTranslatedWeaponAnim(ACT_VM_PRIMARYATTACK)
+
+	ply:SetAnimation(PLAYER_ATTACK1)
+
+	local damage = self:GetDamage()
+
+	local bullet = {
+		Num = math.floor(charge / 5),
+		Src = ply:GetShootPos(),
+		Dir = self:GetShootDir(),
+		Spread = self:GetSpread(),
+		TracerName = primary.TracerName,
+		Tracer = primary.TracerName == "" and 0 or primary.TracerFrequency,
+		Force = damage * 0.25,
+		Damage = damage,
+		Callback = function(attacker, tr, dmginfo)
+			dmginfo:ScaleDamage(self:GetDamageFalloff(tr.StartPos:Distance(tr.HitPos)))
+		end
+	}
+
+	self:ModifyBulletTable(bullet)
+
+	ply:FireBullets(bullet)
+
+	self:ApplyRecoil()
+
+	self:SetNextIdle(CurTime() + self:SequenceDuration())
+	self:SetNextFire(CurTime() + self:GetDelay())
+
+	self:SetLastFire(CurTime())
 end
 
 function SWEP:ConsumeAmmo()
@@ -144,8 +259,38 @@ if CLIENT then
 	function SWEP:CustomAmmoDisplay()
 		return {
 			Draw = true,
-			PrimaryClip = self:GetAmmoCharge()
+			PrimaryClip = math.max(self:GetAmmoCharge() - self:GetAltCharge(), 0),
+			PrimaryAmmo = self:GetAltCharge()
 		}
+	end
+
+	local sprite = CreateMaterial("simple_ez2_pulsepistol_sprite5", "UnlitGeneric", {
+		["$basetexture"] = "effects/fluttercore",
+		["$additive"] = 1,
+		["$vertexcolor"] = 1,
+		["$vertexalpha"] = 1
+	})
+
+	local color = Color(255, 255, 255)
+
+	function SWEP:PreDrawViewModel(vm)
+		local charge = self:GetAltCharge()
+
+		if charge > 0 then
+			local pos = vm:GetAttachment(1).Pos
+			local frac = (charge - 5) / (self.Primary.ClipSize - 5)
+
+			color.a = frac * 255
+
+			cam.Start3D()
+				cam.IgnoreZ(true)
+
+				render.SetMaterial(sprite)
+				render.DrawSprite(pos, 5, 5, color)
+			cam.End3D()
+
+			cam.IgnoreZ(true)
+		end
 	end
 end
 
@@ -180,15 +325,18 @@ if CLIENT then
 			self.Target = values.resultvar
 		end,
 		bind = function(self, mat, ent)
+			if ent:GetClass() == "viewmodel" then
+				ent = ent:GetOwner():GetActiveWeapon()
+			end
+
 			if not IsValid(ent) or ent:GetClass() != "simple_ez2_pulsepistol" then
 				return
 			end
 
-			-- local frac = math.max((ent:GetAmmoCharge() - ent.Primary.Cost) / ent.Primary.ClipSize, 0)
-			-- local col = math.sin(CurTime() * 30) + 1.5
+			local frac = (ent:GetAltCharge() - 5) / (ent.Primary.ClipSize - 5)
+			local col = math.sin(CurTime() / (1 - frac)) * 0.5 + 0.5
 
-			-- mat:SetVector(self.Target, LerpVector(frac, Vector(col, 0, 0), Vector(1, 1, 1)))
-			mat:SetVector(self.Target, Vector(1, 1, 1))
+			mat:SetVector(self.Target, LerpVector(frac, Vector(1, 1, 1), Vector(0, col, 0)))
 		end
 	})
 end
