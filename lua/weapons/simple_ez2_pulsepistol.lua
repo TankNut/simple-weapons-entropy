@@ -121,7 +121,7 @@ function SWEP:GetAltCharge()
 
 	local timeSince = CurTime() - self:GetChargeStart()
 
-	return math.min(math.Round(timeSince * self.Primary.ChargeRate * 2), self.Primary.ClipSize - 5) + 5
+	return math.min(math.Round(timeSince * self.Primary.ChargeRate * 2), self.Primary.ClipSize)
 end
 
 function SWEP:IsEmpty()
@@ -278,7 +278,7 @@ if CLIENT then
 
 		if charge > 0 then
 			local pos = vm:GetAttachment(1).Pos
-			local frac = (charge - 5) / (self.Primary.ClipSize - 5)
+			local frac = charge / self.Primary.ClipSize
 
 			color.a = frac * 255
 
@@ -333,7 +333,7 @@ if CLIENT then
 				return
 			end
 
-			local frac = (ent:GetAltCharge() - 5) / (ent.Primary.ClipSize - 5)
+			local frac = ent:GetAltCharge() / ent.Primary.ClipSize
 			local col = math.sin(CurTime() / (1 - frac)) * 0.5 + 0.5
 
 			mat:SetVector(self.Target, LerpVector(frac, Vector(1, 1, 1), Vector(0, col, 0)))
