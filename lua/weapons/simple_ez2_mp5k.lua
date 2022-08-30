@@ -22,7 +22,7 @@ SWEP.LowerHoldType = "passive"
 SWEP.Firemode = 3
 
 SWEP.Primary = {
-	Ammo = "SMG1",
+	Ammo = "Pistol",
 
 	ClipSize = 30,
 	DefaultClip = 60,
