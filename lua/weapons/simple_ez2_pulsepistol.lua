@@ -318,6 +318,11 @@ function SWEP:FireAnimationEvent(_, _, event)
 	end
 end
 
+function SWEP:OnRestore()
+	self:SetLastFire(CurTime())
+	self:SetChargeStart(0)
+end
+
 if CLIENT then
 	matproxy.Add({
 		name = "SimplePulsePistol",
