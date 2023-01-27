@@ -63,6 +63,9 @@ SWEP.NPCData = {
 
 list.Add("NPCUsableWeapons", {class = "simple_ez2_pulsepistol", title = "Simple Weapons: " .. SWEP.PrintName})
 
+-- Dynamic Weapon Reverb support
+SWEP.dwr_customAmmoType = "pistol"
+
 -- ACT_VM_RECOIL support
 local transitions = {
 	[ACT_VM_PRIMARYATTACK] = ACT_VM_RECOIL1,
