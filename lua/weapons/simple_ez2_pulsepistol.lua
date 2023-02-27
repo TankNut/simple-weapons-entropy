@@ -298,20 +298,7 @@ if CLIENT then
 end
 
 function SWEP:DoImpactEffect(tr, dmgtype)
-	if tr.HitSky then
-		return
-	end
-
-	if not game.SinglePlayer() and IsFirstTimePredicted() then
-		return
-	end
-
-	local effect = EffectData()
-
-	effect:SetOrigin(tr.HitPos + tr.HitNormal)
-	effect:SetNormal(tr.HitNormal)
-
-	util.Effect("AR2Impact", effect)
+	self:DoAR2Impact(tr)
 end
 
 function SWEP:FireAnimationEvent(_, _, event)
@@ -355,7 +342,7 @@ sound.Add({
 	volume = 0.92,
 	level = 140,
 	pitch = {95, 108},
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pistol_fire3.wav"
+	sound = "^simple_weapons/weapons/ez2/pulsepistol/pistol_fire3.wav"
 })
 
 sound.Add({
@@ -371,7 +358,7 @@ sound.Add({
 	channel = CHAN_WEAPON,
 	volume = 0.95,
 	level = 140,
-	sound = "simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_chargedfire.wav"
+	sound = "^simple_weapons/weapons/ez2/pulsepistol/pulse_pistol_chargedfire.wav"
 })
 
 sound.Add({

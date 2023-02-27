@@ -66,7 +66,7 @@ sound.Add({
 	volume = 0.8,
 	level = 140,
 	pitch = {85, 95},
-	sound = "simple_weapons/weapons/ez2/ar2/fire1.wav"
+	sound = "^simple_weapons/weapons/ez2/ar2/fire1.wav"
 })
 
 sound.Add({
@@ -74,7 +74,7 @@ sound.Add({
 	channel = CHAN_WEAPON,
 	volume = 0.55,
 	level = 140,
-	sound = "simple_weapons/weapons/ez2/ar2/ar2_altfire.wav"
+	sound = "^simple_weapons/weapons/ez2/ar2/ar2_altfire.wav"
 })
 
 sound.Add({

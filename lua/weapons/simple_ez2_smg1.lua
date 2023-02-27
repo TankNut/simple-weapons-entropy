@@ -91,7 +91,7 @@ sound.Add({
 	volume = 0.55,
 	level = 140,
 	pitch = {95, 105},
-	sound = "simple_weapons/weapons/ez2/smg1/smg1_fire1.wav"
+	sound = "^simple_weapons/weapons/ez2/smg1/smg1_fire1.wav"
 })
 
 sound.Add({
@@ -100,7 +100,7 @@ sound.Add({
 	volume = 0.61,
 	level = 140,
 	pitch = {95, 105},
-	sound = "simple_weapons/weapons/ez2/grenade_launcher1.wav"
+	sound = "^simple_weapons/weapons/ez2/grenade_launcher1.wav"
 })
 
 sound.Add({

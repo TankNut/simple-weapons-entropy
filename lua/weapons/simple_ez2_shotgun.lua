@@ -84,7 +84,7 @@ sound.Add({
 	volume = 1,
 	level = 140,
 	pitch = {98, 101},
-	sound = "simple_weapons/weapons/ez2/shotgun/shotgun_fire7.wav"
+	sound = "^simple_weapons/weapons/ez2/shotgun/shotgun_fire7.wav"
 })
 
 sound.Add({
@@ -93,7 +93,7 @@ sound.Add({
 	volume = 1,
 	level = 140,
 	pitch = {98, 101},
-	sound = "simple_weapons/weapons/ez2/shotgun/shotgun_dbl_fire7.wav"
+	sound = "^simple_weapons/weapons/ez2/shotgun/shotgun_dbl_fire7.wav"
 })
 
 sound.Add({

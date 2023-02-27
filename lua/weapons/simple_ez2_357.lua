@@ -61,8 +61,8 @@ sound.Add({
 	level = 140,
 	pitch = {88, 100},
 	sound = {
-		"simple_weapons/weapons/ez2/357/357_fire2.wav",
-		"simple_weapons/weapons/ez2/357/357_fire3.wav",
+		"^simple_weapons/weapons/ez2/357/357_fire2.wav",
+		"^simple_weapons/weapons/ez2/357/357_fire3.wav",
 	}
 })
 

@@ -93,7 +93,7 @@ sound.Add({
 	volume = 0.55,
 	level = 140,
 	pitch = {98, 102},
-	sound = "simple_weapons/weapons/ez2/smg2/smg2_fire1.wav"
+	sound = "^simple_weapons/weapons/ez2/smg2/smg2_fire1.wav"
 })
 
 sound.Add({
