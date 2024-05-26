@@ -89,8 +89,8 @@ end
 function SWEP:SetupDataTables()
 	BaseClass.SetupDataTables(self)
 
-	self:AddNetworkVar("Float", "LastFire")
-	self:AddNetworkVar("Float", "ChargeStart")
+	self:NetworkVar("Float", "LastFire")
+	self:NetworkVar("Float", "ChargeStart")
 
 	if SERVER then
 		self:SetLastFire(CurTime())
